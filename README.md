@@ -7,8 +7,5 @@ Will need to update sql server connection string in app.config to point to your 
 sql Query to create databases in the sql management studio is included under Entity/ExampleModel.edmx.sql
 
 
-![Entity Visual](https://www.dropbox.com/s/hh6jsqf5ppalirv/entity.PNG?dl=0)
-Format: ![Alt Text](url)
-
-![GitHub Logo](https://www.dropbox.com/s/hh6jsqf5ppalirv/entity.PNG?dl=0)
-Format: ![Alt Text](https://www.dropbox.com/s/hh6jsqf5ppalirv/entity.PNG?dl=0)
+![Entity Visual](https://www.dropbox.com/s/hh6jsqf5ppalirv/entity.PNG)
+Format: ![Alt Text](https://www.dropbox.com/s/hh6jsqf5ppalirv/entity.PNG)
