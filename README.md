@@ -9,3 +9,6 @@ sql Query to create databases in the sql management studio is included under Ent
 
 ![Entity Visual](https://www.dropbox.com/s/hh6jsqf5ppalirv/entity.PNG?dl=0)
 Format: ![Alt Text](url)
+
+![GitHub Logo](https://www.dropbox.com/s/hh6jsqf5ppalirv/entity.PNG?dl=0)
+Format: ![Alt Text](https://www.dropbox.com/s/hh6jsqf5ppalirv/entity.PNG?dl=0)
