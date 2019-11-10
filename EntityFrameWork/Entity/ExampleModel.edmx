@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ExampleModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ExampleModelStoreContainer">
+    <EntitySet Name="users" EntityType="ExampleModel.Store.users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Passwords" EntityType="ExampleModel.Store.Passwords" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OwnedCars" EntityType="ExampleModel.Store.OwnedCars" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Works" EntityType="ExampleModel.Store.Works" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="usersPasswords" Association="ExampleModel.Store.usersPasswords">
+      <End Role="users" EntitySet="users" />
+      <End Role="Passwords" EntitySet="Passwords" />
+    </AssociationSet>
+    <AssociationSet Name="usersOwnedCars" Association="ExampleModel.Store.usersOwnedCars">
+      <End Role="users" EntitySet="users" />
+      <End Role="OwnedCars" EntitySet="OwnedCars" />
+    </AssociationSet>
+    <AssociationSet Name="usersWork" Association="ExampleModel.Store.usersWork">
+      <End Role="users" EntitySet="users" />
+      <End Role="Work" EntitySet="Works" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Passwords">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="user_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OwnedCars">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Model" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Make" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Year" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Miles" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PlateNumber" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="user_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Works">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="zip" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="phone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="user_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="usersPasswords">
+    <End Role="users" Type="ExampleModel.Store.users" Multiplicity="1" />
+    <End Role="Passwords" Type="ExampleModel.Store.Passwords" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Passwords">
+        <PropertyRef Name="user_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usersOwnedCars">
+    <End Role="users" Type="ExampleModel.Store.users" Multiplicity="1" />
+    <End Role="OwnedCars" Type="ExampleModel.Store.OwnedCars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OwnedCars">
+        <PropertyRef Name="user_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usersWork">
+    <End Role="users" Type="ExampleModel.Store.users" Multiplicity="1" />
+    <End Role="Work" Type="ExampleModel.Store.Works" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Work">
+        <PropertyRef Name="user_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ExampleModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ExampleModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="users" EntityType="ExampleModel.users" />
+          <EntitySet Name="Passwords" EntityType="ExampleModel.Passwords" />
+          <AssociationSet Name="usersPasswords" Association="ExampleModel.usersPasswords">
+            <End Role="users" EntitySet="users" />
+            <End Role="Passwords" EntitySet="Passwords" />
+          </AssociationSet>
+          <EntitySet Name="OwnedCars" EntityType="ExampleModel.OwnedCars" />
+          <AssociationSet Name="usersOwnedCars" Association="ExampleModel.usersOwnedCars">
+            <End Role="users" EntitySet="users" />
+            <End Role="OwnedCars" EntitySet="OwnedCars" />
+          </AssociationSet>
+          <EntitySet Name="Works" EntityType="ExampleModel.Work" />
+          <AssociationSet Name="usersWork" Association="ExampleModel.usersWork">
+            <End Role="users" EntitySet="users" />
+            <End Role="Work" EntitySet="Works" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" />
+          <Property Name="Phone" Type="String" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" />
+          <NavigationProperty Name="Passwords" Relationship="ExampleModel.usersPasswords" FromRole="users" ToRole="Passwords" />
+          <NavigationProperty Name="OwnedCars" Relationship="ExampleModel.usersOwnedCars" FromRole="users" ToRole="OwnedCars" />
+          <NavigationProperty Name="Work" Relationship="ExampleModel.usersWork" FromRole="users" ToRole="Work" />
+        </EntityType>
+        <EntityType Name="Passwords">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="user" Relationship="ExampleModel.usersPasswords" FromRole="Passwords" ToRole="users" />
+          <Property Name="Password" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="usersPasswords">
+          <End Type="ExampleModel.users" Role="users" Multiplicity="1" />
+          <End Type="ExampleModel.Passwords" Role="Passwords" Multiplicity="*" />
+        </Association>
+        <EntityType Name="OwnedCars">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="user" Relationship="ExampleModel.usersOwnedCars" FromRole="OwnedCars" ToRole="users" />
+          <Property Name="Model" Type="String" Nullable="false" />
+          <Property Name="Make" Type="String" Nullable="false" />
+          <Property Name="Year" Type="String" Nullable="false" />
+          <Property Name="Miles" Type="String" Nullable="false" />
+          <Property Name="PlateNumber" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="usersOwnedCars">
+          <End Type="ExampleModel.users" Role="users" Multiplicity="1" />
+          <End Type="ExampleModel.OwnedCars" Role="OwnedCars" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Work">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="user" Relationship="ExampleModel.usersWork" FromRole="Work" ToRole="users" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" />
+          <Property Name="zip" Type="String" Nullable="false" />
+          <Property Name="phone" Type="String" Nullable="false" />
+          <Property Name="email" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="usersWork">
+          <End Type="ExampleModel.users" Role="users" Multiplicity="1" />
+          <End Type="ExampleModel.Work" Role="Work" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ExampleModelStoreContainer" CdmEntityContainer="ExampleModelContainer">
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="IsTypeOf(ExampleModel.users)">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Passwords">
+      <EntityTypeMapping TypeName="IsTypeOf(ExampleModel.Passwords)">
+        <MappingFragment StoreEntitySet="Passwords">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OwnedCars">
+      <EntityTypeMapping TypeName="IsTypeOf(ExampleModel.OwnedCars)">
+        <MappingFragment StoreEntitySet="OwnedCars">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Make" ColumnName="Make" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Miles" ColumnName="Miles" />
+          <ScalarProperty Name="PlateNumber" ColumnName="PlateNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Works">
+      <EntityTypeMapping TypeName="IsTypeOf(ExampleModel.Work)">
+        <MappingFragment StoreEntitySet="Works">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="zip" ColumnName="zip" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="usersPasswords" TypeName="ExampleModel.usersPasswords" StoreEntitySet="Passwords">
+      <EndProperty Name="users">
+        <ScalarProperty Name="Id" ColumnName="user_Id" />
+      </EndProperty>
+      <EndProperty Name="Passwords">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="usersOwnedCars" TypeName="ExampleModel.usersOwnedCars" StoreEntitySet="OwnedCars">
+      <EndProperty Name="users">
+        <ScalarProperty Name="Id" ColumnName="user_Id" />
+      </EndProperty>
+      <EndProperty Name="OwnedCars">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="usersWork" TypeName="ExampleModel.usersWork" StoreEntitySet="Works">
+      <EndProperty Name="users">
+        <ScalarProperty Name="Id" ColumnName="user_Id" />
+      </EndProperty>
+      <EndProperty Name="Work">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

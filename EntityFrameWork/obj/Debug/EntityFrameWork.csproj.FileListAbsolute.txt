@@ -1,0 +1,12 @@
+D:\Apps\.net-entity-framework\EntityFrameWork\bin\Debug\EntityFrameWork.exe.config
+D:\Apps\.net-entity-framework\EntityFrameWork\bin\Debug\EntityFrameWork.exe
+D:\Apps\.net-entity-framework\EntityFrameWork\bin\Debug\EntityFrameWork.pdb
+D:\Apps\.net-entity-framework\EntityFrameWork\bin\Debug\EntityFramework.dll
+D:\Apps\.net-entity-framework\EntityFrameWork\bin\Debug\EntityFramework.SqlServer.dll
+D:\Apps\.net-entity-framework\EntityFrameWork\bin\Debug\EntityFramework.xml
+D:\Apps\.net-entity-framework\EntityFrameWork\bin\Debug\EntityFramework.SqlServer.xml
+D:\Apps\.net-entity-framework\EntityFrameWork\obj\Debug\EntityFrameWork.csprojAssemblyReference.cache
+D:\Apps\.net-entity-framework\EntityFrameWork\obj\Debug\EntityFrameWork.csproj.CoreCompileInputs.cache
+D:\Apps\.net-entity-framework\EntityFrameWork\obj\Debug\EntityFrameWork.csproj.CopyComplete
+D:\Apps\.net-entity-framework\EntityFrameWork\obj\Debug\EntityFrameWork.exe
+D:\Apps\.net-entity-framework\EntityFrameWork\obj\Debug\EntityFrameWork.pdb

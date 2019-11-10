@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ExampleModelStoreContainer" CdmEntityContainer="ExampleModelContainer">
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="IsTypeOf(ExampleModel.users)">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Passwords">
+      <EntityTypeMapping TypeName="IsTypeOf(ExampleModel.Passwords)">
+        <MappingFragment StoreEntitySet="Passwords">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OwnedCars">
+      <EntityTypeMapping TypeName="IsTypeOf(ExampleModel.OwnedCars)">
+        <MappingFragment StoreEntitySet="OwnedCars">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Make" ColumnName="Make" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Miles" ColumnName="Miles" />
+          <ScalarProperty Name="PlateNumber" ColumnName="PlateNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Works">
+      <EntityTypeMapping TypeName="IsTypeOf(ExampleModel.Work)">
+        <MappingFragment StoreEntitySet="Works">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="zip" ColumnName="zip" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="usersPasswords" TypeName="ExampleModel.usersPasswords" StoreEntitySet="Passwords">
+      <EndProperty Name="users">
+        <ScalarProperty Name="Id" ColumnName="user_Id" />
+      </EndProperty>
+      <EndProperty Name="Passwords">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="usersOwnedCars" TypeName="ExampleModel.usersOwnedCars" StoreEntitySet="OwnedCars">
+      <EndProperty Name="users">
+        <ScalarProperty Name="Id" ColumnName="user_Id" />
+      </EndProperty>
+      <EndProperty Name="OwnedCars">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="usersWork" TypeName="ExampleModel.usersWork" StoreEntitySet="Works">
+      <EndProperty Name="users">
+        <ScalarProperty Name="Id" ColumnName="user_Id" />
+      </EndProperty>
+      <EndProperty Name="Work">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

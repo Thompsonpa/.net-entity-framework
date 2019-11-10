@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ExampleModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="ExampleModelContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="users" EntityType="ExampleModel.users" />
+    <EntitySet Name="Passwords" EntityType="ExampleModel.Passwords" />
+    <AssociationSet Name="usersPasswords" Association="ExampleModel.usersPasswords">
+      <End Role="users" EntitySet="users" />
+      <End Role="Passwords" EntitySet="Passwords" />
+    </AssociationSet>
+    <EntitySet Name="OwnedCars" EntityType="ExampleModel.OwnedCars" />
+    <AssociationSet Name="usersOwnedCars" Association="ExampleModel.usersOwnedCars">
+      <End Role="users" EntitySet="users" />
+      <End Role="OwnedCars" EntitySet="OwnedCars" />
+    </AssociationSet>
+    <EntitySet Name="Works" EntityType="ExampleModel.Work" />
+    <AssociationSet Name="usersWork" Association="ExampleModel.usersWork">
+      <End Role="users" EntitySet="users" />
+      <End Role="Work" EntitySet="Works" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" />
+    <Property Name="Email" Type="String" Nullable="false" />
+    <Property Name="Phone" Type="String" Nullable="false" />
+    <Property Name="Address" Type="String" Nullable="false" />
+    <NavigationProperty Name="Passwords" Relationship="ExampleModel.usersPasswords" FromRole="users" ToRole="Passwords" />
+    <NavigationProperty Name="OwnedCars" Relationship="ExampleModel.usersOwnedCars" FromRole="users" ToRole="OwnedCars" />
+    <NavigationProperty Name="Work" Relationship="ExampleModel.usersWork" FromRole="users" ToRole="Work" />
+  </EntityType>
+  <EntityType Name="Passwords">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="user" Relationship="ExampleModel.usersPasswords" FromRole="Passwords" ToRole="users" />
+    <Property Name="Password" Type="String" Nullable="false" />
+  </EntityType>
+  <Association Name="usersPasswords">
+    <End Type="ExampleModel.users" Role="users" Multiplicity="1" />
+    <End Type="ExampleModel.Passwords" Role="Passwords" Multiplicity="*" />
+  </Association>
+  <EntityType Name="OwnedCars">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="user" Relationship="ExampleModel.usersOwnedCars" FromRole="OwnedCars" ToRole="users" />
+    <Property Name="Model" Type="String" Nullable="false" />
+    <Property Name="Make" Type="String" Nullable="false" />
+    <Property Name="Year" Type="String" Nullable="false" />
+    <Property Name="Miles" Type="String" Nullable="false" />
+    <Property Name="PlateNumber" Type="String" Nullable="false" />
+  </EntityType>
+  <Association Name="usersOwnedCars">
+    <End Type="ExampleModel.users" Role="users" Multiplicity="1" />
+    <End Type="ExampleModel.OwnedCars" Role="OwnedCars" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Work">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="user" Relationship="ExampleModel.usersWork" FromRole="Work" ToRole="users" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="Address" Type="String" Nullable="false" />
+    <Property Name="zip" Type="String" Nullable="false" />
+    <Property Name="phone" Type="String" Nullable="false" />
+    <Property Name="email" Type="String" Nullable="false" />
+  </EntityType>
+  <Association Name="usersWork">
+    <End Type="ExampleModel.users" Role="users" Multiplicity="1" />
+    <End Type="ExampleModel.Work" Role="Work" Multiplicity="*" />
+  </Association>
+</Schema>
